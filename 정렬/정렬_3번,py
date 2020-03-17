@@ -1,0 +1,10 @@
+def solution(citations):
+    H_index = [] # H_index 리스트를 만들어준다. 
+    for i in citations: 
+        a = list(filter(lambda x: x >= i, citations)) # i보다 인용된 횟수가 이상인 경우만 filtering 해준다. 
+        if len(a) < i: # 해당 논문의 인용횟수보다 많은 논문을 찾는 것도 중요하지만, 해당 논문이 얼마나 인용됐는지도 확인해야한다. 
+            H_index.append(len(a)) # 따라서 i와 len(a) 중 더 작은 값을 H_index에 append 해준다 
+        else: 
+            H_index.append(i) 
+    answer = max(H_index) # 최종적으로 가장 큰 값을 찾아준다. 
+    return answer
