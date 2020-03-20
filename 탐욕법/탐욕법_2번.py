@@ -59,7 +59,7 @@ def solution(name):
         if sum(m) == 0:
             break
 
-        # 위에 조건이 만족하지 못하면 left, right에 1씩 더해준다.    
+        # 위에 조건이 만족하지 못하면 left, right에 1로 지정해준다.    
         left, right = (1,1)
         
         # left 방향으로 0보다 커질 때까지 1을 더해준다
