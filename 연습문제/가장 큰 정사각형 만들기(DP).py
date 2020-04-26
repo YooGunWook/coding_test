@@ -12,7 +12,7 @@ def solution(board):
     # 제일 윗줄과 첫번째 col은 정사각형 만들 때 필요 없기 때문에 1부터 시작
     for i in range(1, len(board)):
         for j in range(1,len(board[0])):
-            # board[i][j]가 0이라면 정사각형이 만들어지지 않기 때문에 생략
+            # board[i][j]가 0이라면 정사각형이 만들어지지 않기 때문에 생략1     
             if board[i][j] == 0:
                 continue
             # 최솟점을 찾는 이유는 최솟점을 통해 최대 정사각형을 구할 수 있기 때문.
