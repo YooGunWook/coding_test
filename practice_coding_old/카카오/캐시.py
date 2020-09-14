@@ -30,4 +30,5 @@ def solution(cacheSize, cities):
             cache.pop(cache.index(i))
             cache.append(i)
             count += 1
+            
     return count

@@ -1,5 +1,6 @@
 # n진수 만드는 함수
 def convert(n, base):
+
     T = "0123456789ABCDEF"
     q, r = divmod(n, base)
     if q == 0:
@@ -8,7 +9,8 @@ def convert(n, base):
         return convert(q, base) + T[r]
 
 
-def solution(n, t, m, p):
+def solution(n, t, m, p)
+
     # player는 1부터 시작하기 때문에 1로 지정
     count_player = 1
     # turn을 하나씩 count
@@ -43,6 +45,7 @@ def solution(n, t, m, p):
             else:
                 count_player = 1
                 turn += 1
+                
         # m과 p가 같지 않은 경우
         # count_player를 1씩 더해주고, p와 같아지면 real_answer에 넣어준다. 
         else:

@@ -1,4 +1,5 @@
 from datetime import datetime
+
 def full_melody_maker(new_musicinfos):
     
     # dict 형태로 노래별 얼마나 음이 나왔는지 체크한다. 
@@ -43,7 +44,6 @@ def solution(m, musicinfos):
     count_melody = {}
     m = melody_good(m)
     
-
     for i in sing_melody:
         if m in i:
             # 만약에 m이 i안에 있을 경우

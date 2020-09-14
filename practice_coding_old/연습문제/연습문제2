@@ -1,0 +1,20 @@
+def solution(nums): 
+    # min(len(ls)/2, len(set(ls))) 이걸로 구하면 한번에 다 구해짐... 
+    n = len(nums)
+    len_phone = n/2
+    answer = 0
+    # 고른 포켓몬은 리스트에 넣어준다.
+    choosed = []
+    for i in nums:
+        # 값이 같아지면 break
+        if answer == len_phone:
+            break 
+            # 고른 포켓몬 안에 없으면 넣어준다.
+        if i not in choosed:
+            choosed.append(i)
+            answer += 1
+            # 똑같은 포켓몬이 있으면 continue
+        elif i in choosed:
+            continue
+        
+    return answer

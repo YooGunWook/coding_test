@@ -43,7 +43,6 @@ def solution(str1, str2):
     # try, except를 통해 계산을 해준다. 
     try:
         answer = int((inter_value/union_value) * 65536)
-        
     except ZeroDivisionError:
         
         answer = 1 * 65536

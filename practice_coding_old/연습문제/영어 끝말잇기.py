@@ -40,8 +40,8 @@ def solution(n, words):
             
     # 끝까지 아무런 break가 없다면 둘 다 0으로 초기화
     if len(words) == len(words_pass):
-            i = 0
-            count = 0
+        i = 0
+        count = 0
         
     answer = [i, count]
 

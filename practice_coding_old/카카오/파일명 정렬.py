@@ -8,6 +8,7 @@ def solution(files):
 
     # sort 함수를 이용해서 두가지에 대해서 정렬할 수 있게 함. 
     # 우선순위를 앞에다 둠
+    
     dict_sort = sorted(temp, key = lambda x: (x[0].lower(), int(x[1])))
     
     # 합쳐줌

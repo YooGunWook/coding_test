@@ -1,4 +1,3 @@
-
 import string
 
 def solution(msg):
