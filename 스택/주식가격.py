@@ -15,3 +15,5 @@ def solution(prices):
     queue.append(0)
     answer = list(queue)
     return answer
+
+
