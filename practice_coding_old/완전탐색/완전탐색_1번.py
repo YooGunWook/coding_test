@@ -9,7 +9,8 @@ def solution(answers):
     # 정답
     answer = []
     
-    # while문을 통해 answers와 수포자들의 answer 길이를 맞춰준다. (이건 좀 무식한 방식이고 for문으로 순환주기 나눠주면 좀 더 깔끔한 코딩이 나옴.)
+    # while문을 통해 answers와 수포자들의 answer 길이를 맞춰준다.
+    # (이건 좀 무식한 방식이고 for문으로 순환주기 나눠주면 좀 더 깔끔한 코딩이 나옴.)
     i = 0
     while len(s1) < len(answers):
         s1.append(s1[i])
