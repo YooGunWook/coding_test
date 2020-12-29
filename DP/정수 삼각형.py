@@ -6,5 +6,7 @@ def solution(triangle):
             elif j_index == i_index:
                 triangle[i_index][j_index] += triangle[i_index - 1][j_index - 1]
             else:
-                triangle[i_index][j_index] += max(triangle[i_index - 1][j_index], triangle[i_index - 1][j_index - 1])
+                triangle[i_index][j_index] += max(
+                    triangle[i_index - 1][j_index], triangle[i_index - 1][j_index - 1]
+                )
     return max(triangle[-1])

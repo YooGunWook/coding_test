@@ -16,4 +16,3 @@ def solution(prices):
     answer = list(queue)
     return answer
 
-

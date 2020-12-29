@@ -9,5 +9,7 @@ def solution(m, n, puddles):
             if [m_route, n_route] in puddles:
                 route[n_route][m_route] = 0
             else:
-                route[n_route][m_route] = route[n_route - 1][m_route] + route[n_route][m_route - 1]
+                route[n_route][m_route] = (
+                    route[n_route - 1][m_route] + route[n_route][m_route - 1]
+                )
     return route[n][m] % 1000000007
