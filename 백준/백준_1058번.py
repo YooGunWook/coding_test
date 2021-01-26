@@ -3,7 +3,7 @@
 
 # 플로이드 알고리즘 기반 풀이
 def find_friend(n, friend_list):
-    list_visit = [[0] * n for _ in range(n)]
+    list_visit = [[0] * n for _ in range(n)] 3 * 3
     result = 0
     for k in range(n):  # 경유지 -> 친구의 친구를 찾을 때 활용
         for i in range(n):  # 서로 친구인지 탐색

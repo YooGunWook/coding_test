@@ -9,6 +9,7 @@ class TreeNode:
 
 
 class Solution:
+
     def invertTree(self, root: TreeNode) -> TreeNode:
         if root:
             root.left, root.right = self.invertTree(root.right), self.invertTree(
@@ -21,10 +22,35 @@ class Solution:
         queue = collections.deque([root])
         while queue:
             node = queue.popleft()
-            print(node)
             if node:
                 node.left, node.right = node.right, node.left
 
                 queue.append(node.left)
                 queue.append(node.right)
+        return root
+
+    def invertTree_DFS_pre_order(self, root: TreeNode) -> TreeNode:
+        stack = collections.deque([root])
+        while stack:
+            node = stack.pop()
+            # 부모 노드부터 하향식
+    
+            if node:
+                node.left, node.right = node.right, node.left
+                
+                stack.append(node.left)
+                stack.append(node.right)
+        return root
+
+    def invertTree_DFS_post_order(self, root: TreeNode) -> TreeNode:
+        stack = collections.deque([root])
+        while stack:
+            node = stack.pop()
+            print(node)
+            if node:
+                stack.append(node.left)
+                stack.append(node.right)
+                
+                node.left, node.right = node.right, node.left
+                
         return root
