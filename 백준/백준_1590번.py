@@ -21,7 +21,7 @@ def binary_search(T, start, interval, count):
             break
         left, right = bus_info[:mid], bus_info[mid:]
 
-        if left[-1] < T:
+        if left[-1] < T or left[-1] - T < 0:
             bus_info = right
             continue
 
@@ -29,6 +29,7 @@ def binary_search(T, start, interval, count):
             bus_info = right
             tmp_value = min(tmp_value, abs(right[0] - T))
             continue
+
         elif abs(left[-1] - T) < abs(right[0] - T):
             bus_info = left
             tmp_value = min(tmp_value, abs(left[-1] - T))
