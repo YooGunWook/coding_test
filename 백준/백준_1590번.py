@@ -11,17 +11,19 @@ def binary_search(T, start, interval, count):
         bus_info.append(start)
 
     tmp_value = 1000000001
+
     while True:
-        print(bus_info)
         mid = len(bus_info) // 2
+
         if mid == 0:
             if bus_info[0] - T < 0:
                 break
             tmp_value = min(tmp_value, bus_info[0] - T)
             break
+
         left, right = bus_info[:mid], bus_info[mid:]
 
-        if left[-1] < T or left[-1] - T < 0:
+        if left[-1] < T:
             bus_info = right
             continue
 
