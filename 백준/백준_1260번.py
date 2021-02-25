@@ -9,6 +9,25 @@ for _ in range(m):
     graph[g].sort()
     graph[e].sort()
 
+def recursive_dfs(v, discovered=[]):
+    discovered.append(v)
+    for w in graph[v]:
+        if w not in discovered:
+            discovered = recursive_dfs(w, discovered)
+    return discovered
+
+def iterative_bfs(start_v):
+    discovered = [start_v]
+    queue = collections.deque([start_v])
+    while queue:
+        v = queue.popleft()
+        for w in graph[v]:
+            if w not in discovered:
+                discovered.append(w)
+                queue.append(w)
+                
+    return discovered
+
 
 def recursive_dfs(v, discovered=[]):
     discovered.append(v)
