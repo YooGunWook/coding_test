@@ -33,6 +33,7 @@ for y in range(n):
     for x in range(n):
         if apart[x][y] == 1:
             res.append(bfs(x, y))
+res.sort()
 print(len(res))
 for i in res:
     print(i)
