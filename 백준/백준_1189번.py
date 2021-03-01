@@ -7,11 +7,12 @@ visited = []
 for _ in range(r):
     row = [0] * c
     visited.append(row)
-
+ans = 0
 dx, dy = [-1, 1, 0, 0], [0, 0, -1, 1]
 
 
-def dfs(x, y, count, end, ans):
+def dfs(x, y, count, end):
+    global ans
     if (x, y) == end and count == k:
         ans += 1
         return
@@ -23,18 +24,19 @@ def dfs(x, y, count, end, ans):
         if 0 <= nx < r and 0 <= ny < c:
             if visited[nx][ny] == 0 and mat[nx][ny] == ".":
                 visited[nx][ny] = 1
-                for row in visited:
-                    print(row)
-                print()
-                dfs(nx, ny, count + 1, end, ans)
+                dfs(nx, ny, count + 1, end)
                 visited[nx][ny] = 0
+    return ans
 
 
 def solution():
     start = (r - 1, 0)
     visited[r - 1][0] = 1
     end = (0, c - 1)
-    count = 0
-    ans = 0
-    res = dfs(start[0], start[1], count, end, ans)
+    count = 1
+    res = dfs(start[0], start[1], count, end)
     return res
+
+
+solution()
+print(ans)
