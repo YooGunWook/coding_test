@@ -1,5 +1,7 @@
+import copy
+
 n = int(input())
-light = list(map(int, input().split(" ")))
+light = list(map(str, input().split(" ")))
 lights = {}
 for i in range(0, len(light)):
     lights[i + 1] = light[i]
@@ -8,31 +10,35 @@ stus = int(input())
 for _ in range(stus):
     sex, val = list(map(int, input().split(" ")))
     if sex == 1:
-        while val <= len(lights):
-            print(val)
+        tmp_val = copy.deepcopy(val)
+        while val <= n:
             if lights[val] == "0":
                 lights[val] = "1"
             elif lights[val] == "1":
                 lights[val] = "0"
-            val *= 2
+            val += tmp_val
+            
     elif sex == 2:
-        print(sex)
+        if lights[val] == '0':
+            lights[val] = '1'
+        elif lights[val] == '1':
+            lights[val] = '0'
         right = val + 1
         left = val - 1
-        while lights[right] == lights[left]:
-            if lights[right] == 1 and lights[left] == 1:
-                lights[right] = 0
-                lights[left] = 0
-            elif lights[right] == 0 and lights[left] == 0:
-                lights[right] = 1
-                lights[left] = 1
+        while right <= n and left >= 1 and lights[right] == lights[left]:
+            if lights[right] == '1' and lights[left] == '1':
+                lights[right] = '0'
+                lights[left] = '0'
+            elif lights[right] == '0' and lights[left] == '0':
+                lights[right] = '1'
+                lights[left] = '1'
             right += 1
             left -= 1
-            if right not in lights or left not in lights:
-                break
-        if lights[val] == 0:
-            lights[val] = 1
-        elif lights[val] == 1:
-            lights[val] = 0
+            
+light = list(lights.values())
+for i, e in enumerate(light[0:]):
+    if i and not(i % 20):
+        print()
+    print(e, end=" ")
 
-"".join(lights.values())
+
