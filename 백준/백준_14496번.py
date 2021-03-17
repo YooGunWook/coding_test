@@ -26,7 +26,7 @@ def bfs(a):
 
 def solution(a):
     dist = bfs(a)
-    if dist[b] == 0:
+    if b not in dist:
         print(-1)
     else:
         print(dist[b])

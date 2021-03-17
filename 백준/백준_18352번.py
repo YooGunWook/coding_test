@@ -13,7 +13,6 @@ def bfs(x):
     queue = [(0, x)]
     dist = collections.defaultdict(int)
     while queue:
-        print(queue)
         time, node = heapq.heappop(queue)
         if node not in dist:
             dist[node] += time
@@ -25,7 +24,6 @@ def bfs(x):
 
 def solution(x, k):
     dist = bfs(x)
-    print(dist)
     res = []
     for node in dist:
         if dist[node] == k:
