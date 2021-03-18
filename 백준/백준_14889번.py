@@ -11,7 +11,6 @@ def get_lowest(mat, n):
     team_count = int(n // 2)
     people = [i for i in range(n)]
     pair_list = list(combinations(people, team_count))
-    print(pair_list)
     res = 100000
     for i in range(len(pair_list) - 1):
         pair = list(combinations(pair_list[i], 2))
