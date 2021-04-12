@@ -5,7 +5,6 @@ for _ in range(t):
 
 
 def fibonacci(n, memo):
-    global zero, one
     if n < 2:
         return n
     if memo[n] == 0:
@@ -21,3 +20,4 @@ for i in val_list:
         print(0, 1)
     else:
         print(fibonacci(i - 1, memo), fibonacci(i, memo))
+print(memo)

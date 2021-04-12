@@ -25,7 +25,6 @@ def switcher(now, i, n):
 def change_zero(now):
     cnt = 0
     for i in range(0, len(now)):
-        print(now, 1)
         if i == 0:
             now = switcher(now, i, n)
             cnt += 1
@@ -34,7 +33,6 @@ def change_zero(now):
             continue
         cnt += 1
         now = switcher(now, i, n)
-        print(now, 2)
     if now == end:
         return cnt
     return 10000000000
@@ -53,7 +51,7 @@ def change_no_zero(now):
 
 
 cnt1 = change_zero(now1)
-cnt2 = change_zero(now1)
+cnt2 = change_no_zero(now2)
 if cnt1 == cnt2 == 10000000000:
     ans = -1
 else:
