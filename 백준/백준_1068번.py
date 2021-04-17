@@ -44,12 +44,12 @@ graph = collections.defaultdict(collections.deque)
 root = 0
 for idx in range(len(tree)):
     if tree[idx] == -1:
-        root = idx
+        root = idx # root 값을 저장해준다. 
         continue
     graph[tree[idx]].append(idx)
 k = int(input())
 
-if k == root:
+if k == root: # root를 지우면 0이 된다. 
     print(0)
 else:
     graph = dfs(graph, k)
