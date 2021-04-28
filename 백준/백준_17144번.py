@@ -51,7 +51,7 @@ def qurifier_on(mat, start_air):  # 공기 청정기 틀었을 때 먼지 위치
     tmp_mat = copy.deepcopy(mat)
     for idx, purifier in enumerate(start_air):  # 공기 청정기 별로 확인
         x, y = purifier
-        if idx == 0:
+        if idx == 0:  # 위 공기 청정기
 
             direct = direction["right"]
             ny = y + direct[1]
@@ -89,7 +89,7 @@ def qurifier_on(mat, start_air):  # 공기 청정기 틀었을 때 먼지 위치
                 tmp_mat[nx][ny] = mat[nx - 1][ny]
                 nx += direct[0]
 
-        elif idx == 1:
+        elif idx == 1:  # 아래 공기 청정기
             direct = direction["right"]
             ny = y + direct[1]
             while ny < c:
@@ -138,9 +138,9 @@ def get_dust_sum(mat):  # 마지막 출력값 계산용. 총 먼지 개수 확�
 
 # t초만큼 진행
 for _ in range(t):
-    new_mat = dust_spread(mat, dust)
+    new_mat = dust_spread(mat, dust)  # 먼지 퍼지고 난 후
     mat = new_mat
-    mat = qurifier_on(mat, start_air)
+    mat = qurifier_on(mat, start_air)  # 공기 청정기 키고 난 후
     dust = []
-    dust = new_dust(mat, dust)
+    dust = new_dust(mat, dust)  # 새로운 먼지 위치
 print(get_dust_sum(mat))
