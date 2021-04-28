@@ -36,29 +36,29 @@ def bfs(mat, l, r, visit, i, j):
     return visited
 
 
-open_count = 0
+open_count = 0 # 최종 값
 while True:
-    tmp_visit = copy.deepcopy(visit)
-    tmp_mat = copy.deepcopy(mat)
+    tmp_visit = copy.deepcopy(visit) # 매번 변하기 때문에 copy
+    tmp_mat = copy.deepcopy(mat) # 매번 변하기 때문에 copy
     count_g = 0
     for i in range(n):
         for j in range(n):
-            if tmp_visit[i][j] != 1:
+            if tmp_visit[i][j] != 1: # visit한 곳은 탐색에서 제외
                 gate_cont = bfs(mat, l, r, tmp_visit, i, j)
-                sum_people = 0
-                if len(gate_cont) == 1:
+                sum_people = 0 # 이걸로 사람 수 구하기
+                if len(gate_cont) == 1: # 이건 국경을 열 수 없다는 의미
                     continue
-                for cont in gate_cont:
+                for cont in gate_cont: # 사람 수 구하기
                     sum_people += mat[cont[0]][cont[1]]
-                mean_people = math.trunc(sum_people / len(gate_cont))
+                mean_people = math.trunc(sum_people / len(gate_cont)) # 평균 사람 수가 들어가게 됨
                 for cont in gate_cont:
                     tmp_mat[cont[0]][cont[1]] = mean_people
                 if sum_people:
-                    count_g += 1
+                    count_g += 1 # 이걸로 끝 여부 정한다.
 
-    mat = tmp_mat
-    if not count_g:
+    mat = tmp_mat # 나라 인구수 갱신
+    if not count_g: # count_g가 0이면 어떤 나라도 국경을 열어주지 않음 
         break
-    open_count += 1
+    open_count += 1 # open 횟수
 
 print(open_count)
