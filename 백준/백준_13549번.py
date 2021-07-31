@@ -14,6 +14,7 @@ time_chk[n] = 0  # 시작하는 부분은 0초부터 시작
 
 
 def bfs(n, k):  # bfs 기반으로 해결
+    # 다익스트라를 기반으로 하는 게 더 유리하다고 함.
     queue = collections.deque([n])
     while queue:
         p = queue.popleft()
