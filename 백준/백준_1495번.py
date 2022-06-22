@@ -1,30 +1,39 @@
 """
-Day Of Mourning의 기타리스트 강토는 다가오는 공연에서 연주할 N개의 곡을 연주하고 있다. 
-지금까지 공연과는 다른 공연을 보여주기 위해서 이번 공연에서는 매번 곡이 시작하기 전에 볼륨을 바꾸고 연주하려고 한다.
-먼저, 공연이 시작하기 전에 각각의 곡이 시작하기 전에 바꿀 수 있는 볼륨의 리스트를 만들었다. 
-이 리스트를 V라고 했을 때, V[i]는 i번째 곡을 연주하기 전에 바꿀 수 있는 볼륨을 의미한다. 
-항상 리스트에 적힌 차이로만 볼륨을 바꿀 수 있다. 즉, 현재 볼륨이 P이고 지금 i번째 곡을 연주하기 전이라면, i번 곡은 P+V[i]나 P-V[i] 로 연주해야 한다. 
-하지만, 0보다 작은 값으로 볼륨을 바꾸거나, M보다 큰 값으로 볼륨을 바꿀 수 없다.
-곡의 개수 N과 시작 볼륨 S, 그리고 M이 주어졌을 때, 마지막 곡을 연주할 수 있는 볼륨 중 최댓값을 구하는 프로그램을 작성하시오. 
-모든 곡은 리스트에 적힌 순서대로 연주해야 한다.
+DP 기반 풀이
+노래 개수만큼 row를 만들고, 최대 음량까지 col을 만들어준다. 
+그 다음에 직전 음량에서 조절할 수 있는 음량으로 더하기 빼기 해서 가능한 값에 1을 넣어준다.
+그다음에 최댓값을 찾아서 return 한다.
 """
 
 
 n, s, m = list(map(int, input().split(" ")))
-vol = list(map(int, input().split(" ")))
-
-def solution(n,s,m, vol):
-    dp = [0] * n + 1
-    first_val = [s + vol[0], s - vol[1]]
-    for i in range(len(first_val)):
-        tmp_dp = [0] * n + 1
-        tmp_dp[1] = first_val[i]
-        for j in range()
-
-            
-        
+v = list(map(int, input().split(" ")))
 
 
+def solution(n, s, m, v):
+    mat = []
+    for _ in range(n):
+        row = [0] * (m + 1)
+        mat.append(row)
+    if s + v[0] <= m:
+        mat[0][s + v[0]] = 1
+    if s - v[0] >= 0:
+        mat[0][s - v[0]] = 1
+
+    for i in range(1, n):
+        for j in range(0, m + 1):
+            if mat[i - 1][j]:
+                if j + v[i] <= m:
+                    mat[i][j + v[i]] = 1
+                if j - v[i] >= 0:
+                    mat[i][j - v[i]] = 1
+    if sum(mat[-1]) == 0:
+        return -1
+    ans = 0
+    for i in range(m + 1):
+        if mat[-1][i] == 1:
+            ans = i
+    return ans
 
 
-
+print(solution(n, s, m, v))
