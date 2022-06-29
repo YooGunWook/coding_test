@@ -3,7 +3,6 @@ from collections import defaultdict
 """
 구현 기반 풀이
 주의: 위 아래가 반대로 되어 있기 때문에 남쪽과 북쪽에 대해서 반대로 해줘야함.
-
 """
 
 a, b = map(int, input().strip().split(" "))
