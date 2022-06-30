@@ -1,3 +1,7 @@
+"""
+bfs 기반 풀이
+"""
+
 from collections import deque, defaultdict
 
 n, m = list(map(int, input().split(" ")))
