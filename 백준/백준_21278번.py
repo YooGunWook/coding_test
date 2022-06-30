@@ -1,3 +1,7 @@
+"""
+플로이드 와샬 + 브루트 포스 기반 풀이
+"""
+
 n, m = list(map(int, input().split(" ")))
 
 mat = [[1e9] * n for _ in range(n)]
@@ -26,6 +30,7 @@ for i in range(n - 1):
             sum_val += min(mat[k][i], mat[k][j]) * 2
         if ans[2] > sum_val:
             ans = [i + 1, j + 1, sum_val]
+            
 for idx, a in enumerate(ans):
     if idx == len(ans) - 1:
         print(a)
