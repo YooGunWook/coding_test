@@ -5,7 +5,7 @@ len_s = len(s)
 s_count = Counter(s)
 
 
-def back_traking(now, length):
+def back_traking(now, length):  # 백트래킹 기반 풀이
     if length == len_s:
         return 1
     answer = 0
