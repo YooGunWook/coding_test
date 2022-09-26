@@ -1,28 +1,23 @@
-import copy
-import collections
+from collections import Counter
 
-s = input()
-count = 0
-char_count = collections.Counter(s)
-for key in char_count:
-    tmp_char_count = copy.deepcopy(char_count)
-    tmp_char = [key] * len(s)
-    tmp_char_count[key] -= 1
-    ## tmp_char, tmp_char_count, idx
-    
-    for i in range(1, len(s) - 1):
-        for key in char_count:
-            if tmp_char[i-1] != key and tmp_char_count[key] != 0:
-                tmp_char[i] = key
-                tmp_char_count[key] -= 1
-    if sum(tmp_char_count.values()) == 0:
-        count += 1
-print(count)
+s = list(input())
+len_s = len(s)
+s_count = Counter(s)
 
 
-def is_lucky(tmp_char, tmp_char_count, idx):
-    for i in range(idx, len(s) - 1):
-        for key in char_count:
-            if tmp_char[i-1] != key and tmp_char_count[key] != 0:
-                tmp_char[i] = key
-                tmp_char_count[key] -= 1
+def back_traking(now, length):
+    if length == len_s:
+        return 1
+    answer = 0
+    for key in s_count:
+        if s_count[key] == 0:
+            continue
+        if key == now:
+            continue
+        s_count[key] -= 1
+        answer += back_traking(key, length + 1)
+        s_count[key] += 1
+    return answer
+
+
+print(back_traking("", 0))
