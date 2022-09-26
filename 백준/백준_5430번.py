@@ -4,32 +4,35 @@ import sys
 
 t = int(sys.stdin.readline())
 
-
-def solution(command, arr):
-    if command == "R":
-        new_arr = collections.deque([])
-        while arr:
-            new_arr.append(arr.pop())
-        return new_arr
-
-    elif command == "D":
-        arr.popleft()
-
-    return arr
-
-
 for _ in range(t):
-    p = list(sys.stdin.readline())
+    p = sys.stdin.readline()
+    # p = p.replace("RR", "R")
     n = int(sys.stdin.readline())
-    arr = ast.literal_eval(sys.stdin.readline())
-    arr = collections.deque(arr)
-    for command in p:
-        if command == "D" and not arr:
-            arr = "error"
-            break
-        else:
-            arr = solution(command, arr)
-    if arr == "error":
-        print(arr)
-    else:
-        print(list(arr))
+    arr = collections.deque([str(i) for i in ast.literal_eval(sys.stdin.readline())])
+    order = "nr"
+    error_code = False
+    for o in p:
+        if o == "R":
+            if order == "nr":
+                order = "r"
+            else:
+                order = "nr"
+        elif o == "D":
+            if not arr:
+                error_code = True
+                break
+            if order == "nr":
+                arr.popleft()
+            elif order == "r":
+                arr.pop()
+                
+    if error_code:
+        print("error")
+        continue 
+    if order == "nr":
+        print("[" + ",".join(list(arr)) + "]")
+    elif order == "r":
+        print("[" + ",".join(list(arr)[::-1]) + "]")
+                
+                
+        
